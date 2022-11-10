@@ -1,0 +1,26 @@
+LOG:  database system was interrupted; last known up at 2022-10-07 16:07:17 PKT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/1828348: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  role "postgres" does not exist
+STATEMENT:  ALTER USER postgres PASSWORD 'md5e8a48653851e28c69d0506508fb27fc5'
+ERROR:  syntax error at or near "createuser" at character 1
+STATEMENT:  createuser guestbook 
+	CREATE DATABASE guestbook;
+ERROR:  syntax error at or near "createuser" at character 1
+STATEMENT:  createuser guestbook 
+	;
+ERROR:  database "guestbook" already exists
+STATEMENT:  CREATE DATABASE guestbook;
+WARNING:  no privileges were granted for "guestbook"
+ERROR:  null value in column "message" violates not-null constraint
+DETAIL:  Failing row contains (1, Daniyal, Faiz, danifaiz30@gmail.com, null, 2022-10-21 15:31:09, 2022-10-21 15:31:09).
+STATEMENT:  insert into "guests" ("first_name", "last_name", "email", "updated_at", "created_at") values ($1, $2, $3, $4, $5) returning "id"
+ERROR:  duplicate key value violates unique constraint "guests_email_unique"
+DETAIL:  Key (email)=(danifaiz30@gmail.com) already exists.
+STATEMENT:  insert into "guests" ("first_name", "last_name", "email", "message", "updated_at", "created_at") values ($1, $2, $3, $4, $5, $6) returning "id"
+ERROR:  invalid input syntax for integer: "guests"
+STATEMENT:  select * from "guests" where "id" = $1 limit 1
